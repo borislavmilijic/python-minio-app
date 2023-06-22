@@ -145,4 +145,4 @@ def list_objects():
     return render_template('bucket.html', buckets=buckets, bucket_contents=bucket_contents)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)
