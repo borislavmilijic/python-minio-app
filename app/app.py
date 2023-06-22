@@ -73,18 +73,12 @@ def bucket():
     buckets = [bucket['Name'] for bucket in response['Buckets']]
     
     selected_bucket = request.form.get('bucket', '')
-    print(selected_bucket)
     if selected_bucket and selected_bucket != bucket_name:
         bucket_name = selected_bucket
 
-    # bucket_name = request.form['bucket']
-    # print('s'*30)
-    # print(response['Buckets'])
-    print(request.form.get('bucket'))
     if bucket_name == None:
         bucket_name = buckets[0]
-    # print(type(bucket_name))
-    # print('s'*30)
+
     if bucket_name:
         response = s3_client.list_objects_v2(Bucket=bucket_name)
         bucket_contents = [obj['Key'] for obj in response.get('Contents', [])]

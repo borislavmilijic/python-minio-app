@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: python-minio-container
-          image: auroraharbor.smartstream-stp.com/bmtest/python-minio:latest
+          image: auroraharbor.smartstream-stp.com/bmtest/minio-python:0.1
           ports:
             - containerPort: 5000
