@@ -21,7 +21,7 @@ my_config = Config(
 # Configure S3 Client
 @app.route('/', methods=['GET', 'POST'])
 def configure_s3_client():
-    global s3_client
+    global s3_client, bucket_name
     if request.method == 'POST':
         access_key = request.form['access_key']
         secret_key = request.form['secret_key']
@@ -46,7 +46,8 @@ def configure_s3_client():
             )
         
         return redirect('/bucket')
-    
+    s3_client = None
+    bucket_name = None
     return render_template('configure.html')
 
 # Bucket Page
