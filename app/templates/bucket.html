@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bucket Content</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .dropdown {
+            margin-bottom: 10px;
+        }
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #fff;
+        }
+        .btn-primary {
+            background-color: #007bff;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+        }
+        .objects-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .object-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .object-name {
+            flex: 1;
+        }
+        .delete-button {
+            margin-left: 10px;
+        }
+    </style>
+    <script>
+      function validateForm() {
+          var fileInput = document.getElementById("file-input");
+          if (fileInput.files.length === 0) {
+              alert("Please select a file to upload.");
+              return false;
+          }
+      }
+      function reloadDOM() {
+        location.reload();
+      }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>LOGOUT</h1>
+        <form action="/" method="GET">
+            <input type="submit" name="button" value="logout" onclick="reloadDOM()">
+        </form>
+            <!-- <button id="logout" name="logout" type="submit" value="true">Logout</button> -->
+
+        <hr>
+        
+        <h1>Bucket Content</h1>
+        <form action="/bucket" method="POST" enctype="multipart/form-data" onsubmit='return validateForm();'>
+            <div>
+                <input type="file" name="file" id="file-input">
+                <button class="btn btn-primary" type="submit">Upload</button>
+
+            </div>
+       </form>
+   
+        <form action="/bucket" method="POST" enctype="multipart/form-data">
+            <div class="dropdown">
+                <select name="bucket"  id="bucket" >
+                    {% for bucket in buckets %}
+                        <option value="{{ bucket }}">{{ bucket }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <button class="btn btn-primary" formaction="/list_objects" type="submit">List Objects</button>
+            </div>
+            
+        </form>
+        
+
+
+        {% if bucket_contents %}
+            <h3>Bucket Contents:</h3>
+            <ul class="objects-list">
+                {% for object_key in bucket_contents %}
+                    <li class="object-item">
+                        <span class="object-name">{{ object_key }}</span>
+                        <form class="delete-form" action="/delete_item" method="POST">
+                            <input type="hidden" name="bucket" value="{{ selected_bucket }}">
+                            <input type="hidden" name="key" value="{{ object_key }}">
+                            <button class="btn btn-danger delete-button" type="submit">Delete</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

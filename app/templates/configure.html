@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Configure S3 Client</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .form-input {
+            padding: 8px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .submit-button {
+            margin-top: 20px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #fff;
+            background-color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Configure S3 Client</h1>
+        <div class="form-container">
+            <form action="/" method="POST">
+                <fieldset>
+                    <legend>Select a maintenance drone:</legend>
+                
+                    <div>
+                      <input type="radio" id="AWS" name="endpoint_type" value="AWS"
+                             checked>
+                      <label for="AWS">AWS</label>
+                    </div>
+                
+                    <div>
+                      <input type="radio" id="Server" name="endpoint_type" value="Server">
+                      <label for="Server">Server</label>
+                      <label class="form-label" for="access_key">Endpoint:</label>
+                      <input class="form-input" type="text" id="endpoint" name="endpoint" ><br>
+                    </div>
+                
+          
+                </fieldset>
+                
+
+                <label class="form-label" for="access_key">Access Key ID:</label>
+                <input class="form-input" type="text" id="access_key" name="access_key" required><br>
+                <label class="form-label" for="secret_key">Secret Access Key:</label>
+                <input class="form-input" type="text" id="secret_key" name="secret_key" required><br>
+                <button class="submit-button" type="submit">Configure</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

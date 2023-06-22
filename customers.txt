@@ -1,0 +1,21 @@
+## customer 1 -- authorization via group + user + policy
+access_key_id='eMGlzS6htbj0yoDHMByI'
+secret_access_key='OXkOTQEunJx8o89UztkkDXhYMORewlOjZb2fSAfo'
+
+# customer 2 -- authorization via access key (no user, no group)
+access_key_id='OaFn6VxBLd7m4DSvXc7X',
+secret_access_key='9JEq9jRFGJ795dimlfG5LIIUW9tqn3wB23MGVwR2'
+
+# customer 3
+access_key_id='customer3'
+secret_access_key='o49mbKbMPkU5RpIYe03zvRZfnLk79IqvZ5RicgQh'
+
+# customer 4
+access_key_id='customer4'
+secret_access_key='bAglK8ojFWRIaH7roxisPlK7ja4e01mK3jvqvCi9'
+
+# admin read-only
+access_key_id='admin-read-only'
+secret_access_key='07WUWDUtvRqsfIQMOOqVKVALEU8wPlZlVOB9uoJX'
+
+endpoint_url='http://192.168.103.115:9000'

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-minio-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-minio
+  template:
+    metadata:
+      labels:
+        app: python-minio
+    spec:
+      containers:
+        - name: python-minio-container
+          image: auroraharbor.smartstream-stp.com/bmtest/python-minio:latest
+          ports:
+            - containerPort: 5000
